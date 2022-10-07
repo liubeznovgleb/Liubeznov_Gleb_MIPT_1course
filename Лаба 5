@@ -1,0 +1,16 @@
+# Liubeznov_Gleb_MIPT_1course
+
+import numpy as np
+
+np.random.seed(1)
+x = np.random.rand(120)
+print(x.mean())
+print(x.std())
+print(x.sum())
+x1 = x.reshape(12, 10)
+print(x1)
+print(x1.sum(axis=1), x1.sum(axis=0), x1.std(axis=1), x1.std(axis=0), sep="\n")
+print(np.argmin(x1, axis=0), "\n")
+print(np.argmin(x1, axis=1), "\n")
+print(np.argmax(x1, axis=0), "\n")
+print(np.argmax(x1, axis=1), "\n")
