@@ -1,0 +1,23 @@
+# Liubeznov_Gleb_MIPT_1course
+import numpy as np
+
+a = np.linspace(1, 99, 99)
+print(a, end='\n\n')    #Пункт 1
+
+b = a[::3]
+
+print(b, end='\n\n')    #Пункт 2
+
+print(sum(b), end='\n\n')   #Пункт 3
+
+c = b.reshape(11, 3)
+
+print(c, end='\n\n')    #Пункт 4
+
+print(c.T, end='\n\n')  #Пункт 5
+
+print(np.dot(c.T, np.linspace(-9, 1, 11)), end='\n\n')  #Пункт 6
+
+print(c.T[::2, ::4], end='\n\n')    #Пункт 7
+
+print(np.linalg.det(c[2::3]))   #Пункт 8
