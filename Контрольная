@@ -1,0 +1,92 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def task1(a, b):
+    print(a**2 + b**2)
+
+def task2(a):
+    n = 0
+    for i in a:
+        if i in 'qqwertyuiopasdfghjklzxcvbnm':
+            n += 1
+    print(n)
+
+def task3(a):
+    n = 0
+    a = a.split(' ')
+    for i in a:
+        if i[0:3] == 'Abo':
+            n += 1
+    print(n)
+
+#def task4(generator):
+
+
+
+def task5(list_of_smth):
+    if len(list_of_smth) % 2 == 0:
+        print(list_of_smth[-2:1:-2])
+    else:
+        print(list_of_smth[-3:1:-2])
+
+def task6(list1, list2, list3, list4):
+    a = []
+    b = []
+    for i in list1:
+        for j in list4:
+            if i == j:
+                a.append(i)
+    for i in list3:
+        for j in list2:
+            if i == j:
+                b.append(i)
+    print(a + b)
+
+
+def task7():
+    np.random.seed(7)
+    a = np.random.randint(0, 25, (5, 5))
+    b = a[1:5, 0:4]
+    print(b)
+    print(a, np.linalg.det(b))
+
+def f(x):
+    return np.sin(x)
+def pr(f, x):
+    return (f(x + 0.0000001) - f(x)) / 0.0000001
+
+def task8(f, min_x, max_x, N, min_y, max_y):
+    fig = plt.figure(figsize=(10, 4))
+    ax = fig.add_subplot()
+    x = np.linspace(min_x, max_x, N)
+    y = f(x)
+    ax.plot(x, y, '--', color='r')
+    g = pr(f, x)
+    ax.plot(x, y)
+    ax.set_xscale('log')
+    plt.plot(x, g)
+    plt.plot(x, y)
+    plt.grid()
+    plt.savefig('function.jpeg')
+    plt.show()
+
+#def task9(data, x_array, y_array, threshold):
+    # TODO: ...
+
+def task10(list_of_smth, n):
+    a = []
+    for i in range(len(list_of_smth)):
+        if i + n <= len(list_of_smth):
+            a.append((product(list_of_smth[i] for i in range(i, i + n))) ** (1 / n + 1))
+        else:
+            a.append((product(list_of_smth[i] for i in range(i, len(list_of_smth)))) ** (1 / (len(list_of_smth) - i)))
+    print(a)
+
+
+#def task11(filename="infile.csv"):
+    # TODO: ...
+
+#def task12(filename="video-games.csv"):
+
+task10([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 100], 2)
