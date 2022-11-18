@@ -21,8 +21,8 @@ def new_ball():
     x1, x2 = randint(100, 1100), randint(100, 1100)
     y1, y2 = randint(100, 900), randint(100, 900)
     r1, r2 = randint(30, 100), randint(30, 100)
-    vx1, vy1 = randint(-25, 25), randint(-25, 25)
-    vx2, vy2 = randint(-25, 25), randint(-25, 25)
+    vx1, vy1 = randint(-10, 10), randint(-10, 10)
+    vx2, vy2 = randint(-10, 10), randint(-10, 10)
     color1, color2 = COLORS[randint(0, 5)], COLORS[randint(0, 5)]
     circle(screen, color1, (x1, y1), r1)
     circle(screen, color2, (x2, y2), r2)
