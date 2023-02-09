@@ -2,6 +2,8 @@
 
 using namespace std;
 
+int a;
+
 int pol(int a)
 {
     int c = 1;
@@ -27,5 +29,6 @@ int pol(int a)
 
 main()
 {
-    cout << ((pol(1334321) == 1)? "YES": "NO") << endl;
+    cin >> a;
+    cout << ((pol(a) == 1)? "YES": "NO") << endl;
 }
