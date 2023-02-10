@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int a;
 
 int pol(int a)
