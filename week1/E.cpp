@@ -6,9 +6,9 @@ int base; int power;
 
 int recursive_power(int base, int power)
 {
-    if (power == 1)
+    if (power == 0)
     {
-        return base;
+        return 1;
     }
     else
     {
