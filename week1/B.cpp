@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int a;
 
 int fac(int a)
