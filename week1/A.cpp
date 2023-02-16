@@ -3,7 +3,6 @@
 using namespace std;
 
 
-int a;
 
 int pol(int a)
 {
@@ -28,8 +27,9 @@ int pol(int a)
     
 }
 
-main()
+int main()
 {
+    int a;
     cin >> a;
     cout << ((pol(a) == 1)? "YES": "NO") << endl;
 }
