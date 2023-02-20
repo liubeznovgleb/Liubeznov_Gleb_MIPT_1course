@@ -62,7 +62,7 @@ void print_array(int (&a)[N])
 
 int main()
 {
-    int a[N]; int k;
+    int a[N];
     read_array(a);
     moveNegativeToEnd(a);
     print_array(a);
