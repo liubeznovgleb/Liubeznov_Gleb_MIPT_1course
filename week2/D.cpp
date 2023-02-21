@@ -9,59 +9,43 @@ int b[N];
 
 int AmountPositive(int (&)[N]);
 
-void moveNegativeToEnd(int (&a)[N])
-{ 
+void moveNegativeToEnd(int (&a)[N]) {
     int t = AmountPositive(a);
     int k = 0;
-    for (int i = 0; i < N; i++)
-    {
-        if (a[i] > 0)
-        {
+    for (int i = 0; i < N; i++) {
+        if (a[i] > 0) {
             b[k] = a[i];
-            k ++;
-        }
-        else
-        {
+            k++;
+        } else {
             b[t] = a[i];
-            t ++;
+            t++;
         }
-        
     }
-    
 }
 
-int AmountPositive(int (&a)[N])
-{
+int AmountPositive(int (&a)[N]) {
     int t = 0;
-    for (int i = 0; i < N; i++)
-    {
-        if (a[i] > 0)
-        {
-            t ++;
-        }  
+    for (int i = 0; i < N; i++) {
+        if (a[i] > 0) {
+            t++;
+        }
     }
     return t;
 }
 
-
-void read_array(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
-    {
+void read_array(int (&a)[N]) {
+    for (int i = 0; i < N; i++) {
         cin >> a[i];
     }
 }
 
-void print_array(int (&a)[N])
-{
-    for (int i = 0; i < N; i++)
-    {
+void print_array(int (&a)[N]) {
+    for (int i = 0; i < N; i++) {
         cout << b[i] << " ";
     }
 }
 
-int main()
-{
+int main() {
     int a[N];
     read_array(a);
     moveNegativeToEnd(a);
