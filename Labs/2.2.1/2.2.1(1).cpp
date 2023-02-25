@@ -6,12 +6,10 @@
 
 using namespace std;
 
-void lon(float (&a)[N]){
-    for (int i = 0; i < N; i++)
-    {
+void lon(float (&a)[N]) {
+    for (int i = 0; i < N; i++) {
         a[i] = log(32.5201 / a[i]);
     }
-    
 }
 
 void read_array(float (&a)[N]) {
