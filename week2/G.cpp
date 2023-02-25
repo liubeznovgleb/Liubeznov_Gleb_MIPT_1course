@@ -7,14 +7,23 @@ using namespace std;
 
 int findUnique(int (&a)[N]) {
     int t = 1;
+    int c_0 = 0;
     for (int i = 0; i < N; i++) {
-        if (t % a[i] == 0) {
+        if (a[i] == 0) {
+            c_0++;
+        }
+
+        else if (t % a[i] == 0) {
             t /= a[i];
         } else {
             t *= a[i];
         }
     }
-    return t;
+    if (c_0 % 2 == 0) {
+        return t;
+    } else {
+        return 0;
+    }
 }
 
 void read_array(int (&a)[N]) {
