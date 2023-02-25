@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "random": "cpp"
-    }
+        "random": "cpp",
+        "test": "cpp",
+        "ostream": "cpp"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
 }
