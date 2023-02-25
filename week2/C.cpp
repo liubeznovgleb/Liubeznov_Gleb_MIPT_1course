@@ -1,6 +1,6 @@
 #include <iostream>
 #ifndef N
-#define N 6
+#define N 3
 #endif
 
 using namespace std;
@@ -44,6 +44,7 @@ int main() {
     int a[N];
     int k;
     cin >> k;
+    k = k % N;
     read_array(a);
     shiftRight(a, k);
     print_array(a);
