@@ -1,3 +1,5 @@
 .vscode
 *.exe
 .clang-format
+draft
+Labs
