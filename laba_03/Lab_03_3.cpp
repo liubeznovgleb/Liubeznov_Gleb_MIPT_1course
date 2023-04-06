@@ -48,7 +48,7 @@ int Sluch_4() {
 Node *random_vector(int x, int y) {
     Node *v = new Node;
     srand(time(NULL));
-    v->x = Sluch_4() % x + 1;
+    v->x = Sluch_4() % 20 + 1;
     //  v->y = Sluch_4() % y + 1;
     //v->x = x / 2;
     // v->y = y / 2;
@@ -132,7 +132,7 @@ int main() {
     // cin >> x;
     // cin >> y;
     int count = N;
-    for (int j = 200; j < 201; j++) {
+    for (int j = 20; j < 21; j++) {
         int s = 0;
         // cout << "j = " << j << endl;
         x = j - 1;
@@ -147,4 +147,8 @@ int main() {
         }
         cout << s / 100 << ", ";
     }
+    for (int i = 0; i < N; i++) {
+        delete a[i];
+    }
+    delete a;
 }

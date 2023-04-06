@@ -90,4 +90,5 @@ int main() {
         }
         cout << s / n << ", ";
     }
+    delete v;
 }

@@ -153,4 +153,8 @@ int main() {
         }
         cout << s / 100000 << ", ";
     }
+    for (int i = 0; i < N; i++) {
+        delete a[i];
+    }
+    delete a;
 }
