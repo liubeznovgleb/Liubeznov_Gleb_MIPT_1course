@@ -9,7 +9,7 @@ using std::endl;
 
 std::default_random_engine rng((int)time(0));
 
-const int N = 1;
+const int N = 200;
 
 struct Node
 {
@@ -48,20 +48,27 @@ int Sluch_4() {
 Node *random_vector(int x, int y) {
     Node *v = new Node;
     srand(time(NULL));
-    v->x = Sluch_4() % x + 1;
-    v->y = Sluch_4() % y + 1;
-    cout << v->x << " " << v->y << endl;
-    // v->x = x / 2;
-    // v->y = y / 2;
+    v->x = Sluch_4() % (x - 1) + 1;
+    v->y = Sluch_4() % (y - 1) + 1;
+    // cout << v->x << " " << v->y << endl;
+    //  v->x = x / 2;
+    //  v->y = y / 2;
     return v;
+}
+
+Node *null_vector() {
+    Node *v = new Node;
+    v->cond = 0;
+    v->x = v->y = 1;
 }
 
 void print_vector(Node *v) {
     cout << v->x << " " << v->y << " " << v->cond << endl;
 }
 
-void moving_mass(Node *a[N], int x, int y) {
-    for (int i = 0; i < N; i++) {
+void moving_mass(Node *a[N], int x, int y, int j) {
+    for (int i = 0; i < j; i++) {
+        // print_vector(a[i]);
         if (a[i]->x == 1 or a[i]->x == x or a[i]->y == 1 or a[i]->y == y) {
             a[i]->cond = 0;
         } else if (a[i]->cond == 1) {
@@ -79,42 +86,60 @@ void moving_mass(Node *a[N], int x, int y) {
                 a[i]->y = (a[i]->y + 1);
                 a[i]->y_prev = a[i]->y - 1;
             }
-            // print_vector(a[i]);
         }
+        // print_vector(a[i]);
     }
-    for (int i = 0; i < N; i++) {
-        for (int j = i + 1; j < N; j++) {
-            if (a[i]->x == a[j]->x and a[i]->y == a[j]->y) {
+    for (int i = 0; i < j; i++) {
+        for (int k = i + 1; k < j; k++) {
+            if (a[i]->x == a[k]->x and a[i]->y == a[k]->y) {
                 a[i]->x = a[i]->x_prev;
                 a[i]->y = a[i]->y_prev;
             }
-            if ((a[i]->x == a[j]->x and
-                 (a[i]->y - a[j]->y == 1 or a[i]->y - a[j]->y == -1)) or
-                (a[i]->y == a[j]->y and
-                 (a[i]->x - a[j]->x == 1 or a[i]->x - a[j]->x == -1))) {
+            if ((a[i]->x == a[k]->x and
+                 (a[i]->y - a[k]->y == 1 or a[i]->y - a[k]->y == -1)) or
+                (a[i]->y == a[k]->y and
+                 (a[i]->x - a[k]->x == 1 or a[i]->x - a[k]->x == -1))) {
                 a[i]->cond = 0;
-                a[j]->cond = 0;
+                a[k]->cond = 0;
             }
         }
     }
 }
 
-int carrot(Node *a[N], int x, int y) {
+void check(Node *a[N], int x, int y, int j) {
+    int n = j;
+    for (int i = 0; i < j; i++) {
+        // print_vector(a[i]);
+        if (a[i]->x == 1 or a[i]->x == x or a[i]->y == 1 or a[i]->y == y) {
+            a[i]->cond = 0;
+        }
+        for (int i = 0; i < j; i++) {
+            for (int k = i + 1; k < n; k++) {
+                if (a[i]->x == a[k]->x and a[i]->y == a[k]->y) {
+                    a[k]->cond = 0;
+                }
+            }
+        }
+    }
+}
+
+int carrot(Node *a[N], int x, int y, int j) {
     int w = 0;
-    int count = N;
+    int count = j;
+    check(a, x, y, j);
     while (count > 0) {
         count = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < j; i++) {
             if (a[i]->cond == 1) {
                 count++;
             }
         }
         if (count > 0) {
-            moving_mass(a, x, y);
+            moving_mass(a, x, y, j);
             w++;
         }
         count = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < j; i++) {
             if (a[i]->cond == 1) {
                 count++;
             }
@@ -132,29 +157,32 @@ Node *mass(int N, int x, int y) {
 }
 
 int main() {
+    int n = 100;
+    // int array[n];              // array on stack
+    // int *array = new int[n];   // array on heap (n can be non-const)
     int x;
     int y;
     Node *a[N];
     // cin >> x;
     // cin >> y;
     int count = N;
-    for (int j = 200; j < 201; j++) {
+    for (int j = 2; j < 70; j+=6) {
         int s = 0;
         // cout << "j = " << j << endl;
-        x = j - 1;
-        y = j - 1;
-        for (int k = 0; k < 100000; k++) {
-            for (int i = 0; i < N; i++) {
+        x = 10;
+        y = 10;
+        for (int k = 0; k < 10000; k++) {
+            Node *a[N];
+            for (int i = 0; i < j; i++) {
                 a[i] = random_vector(x, y);
             }
             // print_vector(a[1]);
             int w = 0;
-            s += carrot(a, x, y);
+            s += carrot(a, x, y, j);
         }
-        cout << s / 100000 << ", ";
+        cout << s / 10000 << ", ";
     }
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < 70; i++) {
         delete a[i];
     }
-    delete a;
 }
